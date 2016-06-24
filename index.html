@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Is The GTX 1080 Available?</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+<style>
+body {
+overflow: "hidden";
+background-color: rgb(119, 185, 0);
+}
+#whelp {
+position: fixed;
+width: 400px;
+height: 200px;
+text-align: center;
+vertical-align: middle;
+line-height: 200px;
+font-size: 70pt;
+top: 50%;
+left: 50%;
+margin-left: -200px;
+margin-top: -100px;
+font-family: 'Open Sans', sans-serif;
+color: #FFFFFF;
+text-shadow: 0px 0px 8px rgb(0, 0, 0);
+}
+</style>
+</head>
+<body>
+	<div id="whelp"></div>
+</body>
+<script>
+function whelllll(response) {
+	txt = "WHO KNOWS?"
+	obj = JSON.parse(response);
+	txt = obj.inventoryStatus.productIsInStock == "true" ? "NOT FOR LONG" : "NOPE";
+	document.getElementById("whelp").innerHTML = txt;
+
+}
+
+
+(function() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+	if (xhttp.readyState == 4 && xhttp.status == 200) {
+		whelllll(xhttp.responseText);
+	}
+};
+xhttp.open("GET", "https://api.digitalriver.com/v1/shoppers/me/products/2740204200/inventory-status?format=json&locale=en_us&apiKey=9485fa7b159e42edb08a83bde0d83dia&currency=USD&productId=2740204200", true)
+xhttp.send()
+})();
+</script>
+</html>
