@@ -1,0 +1,5 @@
+name: isthegtx1080available
+description: >
+  Well?  WELLLL???  TELL ME!!!
+dependencies:
+  browser: ">=0.10.0 <0.11.0"
